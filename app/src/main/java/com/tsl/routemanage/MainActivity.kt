@@ -1,5 +1,6 @@
 package com.tsl.routemanage
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,6 +9,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -40,6 +42,7 @@ import com.tsl.routemanage.component.BottomNavigationBar
 import com.tsl.routemanage.navigation.MainApp
 import com.tsl.routemanage.navigation.MainUiController
 import com.tsl.routemanage.ui.theme.RouteManageTheme
+import org.intellij.lang.annotations.JdkConstants
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,6 +54,10 @@ class MainActivity : ComponentActivity() {
                 MainScreen(navController)
             }
         }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
     }
 }
 
@@ -99,40 +106,18 @@ fun TopBar(mainUiController: MutableState<MainUiController>) {
         Box(
             Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.08f)
-
+                .fillMaxHeight(0.15f)
         ) {
-            Column(
-                Modifier
-                    .fillMaxSize()
-                    .padding(
-                        top =
-                            WindowInsets.statusBars
-                                .asPaddingValues()
-                                .calculateTopPadding(),
-                        bottom = 10.dp,
-                        start = 16.dp,
-                        end = 16.dp,
-                    )
-                    .verticalScroll(rememberScrollState()),
+            Row(
+                modifier = Modifier
+                    .fillMaxSize(),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxSize(),
-                ) {
-                    Text(
-                        text = "Bottom",
-
-                        modifier = Modifier.weight(0.85f),
-                    )
-
-                    // This is where your composable is invoked
-
-                    Text(
-                        text = "Accept",
-
-                        )
-                }
+                Text(
+                    text = "Toolbar",
+                    // Remove weight to allow proper centering
+                )
             }
         }
     }
