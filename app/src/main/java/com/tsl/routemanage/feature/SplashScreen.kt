@@ -20,7 +20,7 @@ internal fun SplashScreen(
     destination: (NavigationDestination) -> Unit,
 ) {
     LaunchedEffect(true) {
-        delay(5000)
+        delay(2000)
         navUiController.value = navUiController.value
         destination(NavigationDestination.ToProfileScreen)
     }

@@ -1,7 +1,9 @@
 package com.tsl.routemanage.feature.profile
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -19,9 +21,17 @@ internal fun ProfileScreen(
     destination: (NavigationDestination) -> Unit,
 ) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(
-            text = "Profile Screen"
-        )
+        Column {
+            Text(
+                text = "Profile Screen"
+            )
+            Button(onClick = {
+                val isShow = navUiController.value.showNavigationTopBar
+                navUiController.value = navUiController.value.copy(showNavigationTopBar = !isShow)
+            }) {
+                Text("Click me")
+            }
+        }
     }
 }
 

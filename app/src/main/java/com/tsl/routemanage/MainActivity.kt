@@ -9,6 +9,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -42,7 +43,7 @@ import com.tsl.routemanage.component.BottomNavigationBar
 import com.tsl.routemanage.navigation.MainApp
 import com.tsl.routemanage.navigation.MainUiController
 import com.tsl.routemanage.ui.theme.RouteManageTheme
-import org.intellij.lang.annotations.JdkConstants
+import androidx.compose.ui.graphics.Color
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -106,11 +107,11 @@ fun TopBar(mainUiController: MutableState<MainUiController>) {
         Box(
             Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.15f)
+                .fillMaxHeight(0.12f)
+                .background(Color.Gray)
         ) {
             Row(
-                modifier = Modifier
-                    .fillMaxSize(),
+                modifier = Modifier.fillMaxSize(),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
